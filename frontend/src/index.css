@@ -15,3 +15,28 @@ code {
 .nav-link{
   margin-left: 40px;
 }
+
+#SupportHero{
+  background: rgb(56, 126, 209);
+  color: white;
+}
+#SupportHero a{
+  color: white;
+
+}
+#SupportHero input{
+  padding: 1rem 1rem;
+  width: 90%;
+  border-radius: .35rem;
+}
+
+#SupportWrapper{
+  display: flex;
+  justify-content: space-between;
+  margin: 0 150px;
+}
+
+#SupportWrapper h4{
+  margin-left: -3rem;
+  
+}
