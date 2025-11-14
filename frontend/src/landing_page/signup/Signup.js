@@ -1,9 +1,11 @@
-function Signup() {
-    return ( 
-        <div>
-            Signup
-        </div>
-     );
-}
+import { useEffect } from "react";
 
-export default Signup;
+const RedirectToDashboard = () => {
+  useEffect(() => {
+    window.location.href = "https://your-dashboard.onrender.com";
+  }, []);
+
+  return null;
+};
+
+export default RedirectToDashboard;

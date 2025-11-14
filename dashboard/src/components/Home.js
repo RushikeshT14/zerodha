@@ -3,13 +3,24 @@ import React from "react";
 import Dashboard from "./Dashboard";
 import TopBar from "./TopBar";
 
+import { GeneralContextProvider } from "./GeneralContext";
+
 const Home = () => {
   return (
-    <>
+    <GeneralContextProvider>
       <TopBar />
       <Dashboard />
-    </>
+    </GeneralContextProvider>
   );
 };
+
+// const Home = () => {
+//   return (
+//     <>
+//       <TopBar />
+//       <Dashboard />
+//     </>
+//   );
+// };
 
 export default Home;

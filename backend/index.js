@@ -2,19 +2,33 @@ require("dotenv").config();
 
 const express = require("express");
 const mongoose = require("mongoose");
-const cors = require('cors');
+const cors = require("cors");
 
-const bodyParser =require("body-parser");
+const bodyParser = require("body-parser");
 
 const { HoldingModel } = require("./model/HoldingModel.js");
 const { PositionModel } = require("./model/PositionModel.js");
+const { OrderModel } = require("../backend/model/OrderModel.js");
 
 const PORT = process.env.PORT || 3002;
 const URL = process.env.MONGO_URL;
 
 const app = express();
 
-app.use(cors());
+// app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "http://localhost:3000",          // local frontend
+      "http://localhost:3001",          // local dashboard (if any)
+      "https://your-frontend-domain",   // after hosting
+      "https://your-dashboard-domain"   // after hosting
+    ],
+    methods: "GET,POST",
+    credentials: true,
+  })
+);
+
 app.use(bodyParser.json());
 
 //app.get("/addHoldings", (req, res) => {
@@ -192,6 +206,17 @@ app.get("/allholdings", async (req, res) => {
 app.get("/allpositions", async (req, res) => {
   let allpositions = await PositionModel.find({});
   res.json(allpositions);
+});
+
+app.post("/newOrder", async (req, res) => {
+  let newOrder = new OrderModel({
+    name: req.body.name,
+    qty: req.body.qty,
+    price: req.body.price,
+    mode: req.body.mode, 
+  });
+  await newOrder.save();
+  res.send("daada saved");
 });
 
 app.listen(PORT, () => {
