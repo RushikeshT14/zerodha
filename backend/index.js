@@ -21,8 +21,8 @@ app.use(
     origin: [
       "http://localhost:3000",          // local frontend
       "http://localhost:3001",          // local dashboard (if any)
-      "https://your-frontend-domain",   // after hosting
-      "https://your-dashboard-domain"   // after hosting
+      "https://zerodhahome.onrender.com",   // after hosting
+      "https://zerodha-a7b1.onrender.com"   // after hosting
     ],
     methods: "GET,POST",
     credentials: true,
